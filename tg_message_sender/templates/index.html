@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1 class="main_text">Заполните атрибуты</h1>
+    <hr>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% elif status %}
+        <p class="status">{{ status }}</p>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <label>Bot API token</label><br>
+        <input type="text" name="token"><br>
+        <label>Chat ID</label><br>
+        <input type="text" name="chat_id"><br>
+        <label>Text message</label><br>
+        <input type="text" name="message"><br>
+        <input type="submit" value="Send">
+      </form>
+</body>
+</html>
